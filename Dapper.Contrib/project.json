@@ -39,17 +39,6 @@
       },
       "dependencies": {
       }
-    },
-    "dotnet5.4": {
-      "compilationOptions": {
-        "define": [ "ASYNC", "COREFX" ]
-      },
-      "dependencies": {
-        "System.Reflection.Emit": "4.0.1-*",
-        "System.Reflection.Emit.ILGeneration": "4.0.1-*",
-        "System.Reflection.Emit.Lightweight": "4.0.1-*",
-        "System.Runtime": "4.0.21-*"
-      }
     }
   }
 }
