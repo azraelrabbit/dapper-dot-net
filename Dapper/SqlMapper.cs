@@ -924,8 +924,13 @@ namespace Dapper
                 throw;
             }
         }
-        private static IEnumerable<T> QueryImpl<T>(this IDbConnection cnn, CommandDefinition command, Type effectiveType)
+        public static IEnumerable<T> QueryImpl<T>(this IDbConnection cnn, CommandDefinition command, Type effectiveType)
         {
+            if (!_typeMaps.ContainsKey(typeof(T)))
+            {
+                SetTypeMap(typeof(T), new ColumnAttributeTypeMapper<T>());
+            }
+
             object param = command.Parameters;
             var identity = new Identity(command.CommandText, command.CommandType, cnn, effectiveType, param?.GetType(), null);
             var info = GetCacheInfo(identity, param, command.AddToCache);
